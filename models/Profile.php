@@ -17,11 +17,11 @@ use yii\db\ActiveRecord;
 /**
  * This is the model class for table "profile".
  *
- * @property integer $user_id
+ * @property integer $userId
  * @property string  $name
  * @property string  $public_email
- * @property string  $gravatar_email
- * @property string  $gravatar_id
+ * @property string  $gravatarEmail
+ * @property string  $gravatarId
  * @property string  $location
  * @property string  $website
  * @property string  $bio
@@ -49,7 +49,7 @@ class Profile extends ActiveRecord
      */
     public function getAvatarUrl($size = 200)
     {
-        return '//gravatar.com/avatar/' . $this->gravatar_id . '?s=' . $size;
+        return '//gravatar.com/avatar/' . $this->gravatarId . '?s=' . $size;
     }
 
     /**
@@ -57,7 +57,7 @@ class Profile extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne($this->module->modelMap['User'], ['id' => 'user_id']);
+        return $this->hasOne($this->module->modelMap['User'], ['id' => 'userId']);
     }
 
     /**
@@ -69,11 +69,11 @@ class Profile extends ActiveRecord
             'bioString'            => ['bio', 'string'],
             'timeZoneValidation'   => ['timezone', 'validateTimeZone'],
             'publicEmailPattern'   => ['public_email', 'email'],
-            'gravatarEmailPattern' => ['gravatar_email', 'email'],
+            'gravatarEmailPattern' => ['gravatarEmail', 'email'],
             'websiteUrl'           => ['website', 'url'],
             'nameLength'           => ['name', 'string', 'max' => 255],
             'publicEmailLength'    => ['public_email', 'string', 'max' => 255],
-            'gravatarEmailLength'  => ['gravatar_email', 'string', 'max' => 255],
+            'gravatarEmailLength'  => ['gravatarEmail', 'string', 'max' => 255],
             'locationLength'       => ['location', 'string', 'max' => 255],
             'websiteLength'        => ['website', 'string', 'max' => 255],
         ];
@@ -87,7 +87,7 @@ class Profile extends ActiveRecord
         return [
             'name'           => \Yii::t('user', 'Name'),
             'public_email'   => \Yii::t('user', 'Email (public)'),
-            'gravatar_email' => \Yii::t('user', 'Gravatar email'),
+            'gravatarEmail' => \Yii::t('user', 'Gravatar email'),
             'location'       => \Yii::t('user', 'Location'),
             'website'        => \Yii::t('user', 'Website'),
             'bio'            => \Yii::t('user', 'Bio'),
@@ -151,8 +151,8 @@ class Profile extends ActiveRecord
      */
     public function beforeSave($insert)
     {
-        if ($this->isAttributeChanged('gravatar_email')) {
-            $this->setAttribute('gravatar_id', md5(strtolower(trim($this->getAttribute('gravatar_email')))));
+        if ($this->isAttributeChanged('gravatarEmail')) {
+            $this->setAttribute('gravatarId', md5(strtolower(trim($this->getAttribute('gravatarEmail')))));
         }
 
         return parent::beforeSave($insert);

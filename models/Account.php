@@ -22,13 +22,13 @@ use yii\helpers\Url;
 
 /**
  * @property integer $id          Id
- * @property integer $user_id     User id, null if account is not bind to user
+ * @property integer $userId     User id, null if account is not bind to user
  * @property string  $provider    Name of service
- * @property string  $client_id   Account id
+ * @property string  $clientId   Account id
  * @property string  $data        Account properties returned by social network (json encoded)
  * @property string  $decodedData Json-decoded properties
  * @property string  $code
- * @property integer $created_at
+ * @property integer $createdAt
  * @property string  $email
  * @property string  $username
  *
@@ -57,7 +57,7 @@ class Account extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne($this->module->modelMap['User'], ['id' => 'user_id']);
+        return $this->hasOne($this->module->modelMap['User'], ['id' => 'userId']);
     }
 
     /**
@@ -65,7 +65,7 @@ class Account extends ActiveRecord
      */
     public function getIsConnected()
     {
-        return $this->user_id != null;
+        return $this->userId != null;
     }
 
     /**
@@ -98,7 +98,7 @@ class Account extends ActiveRecord
             'username' => null,
             'email'    => null,
             'code'     => null,
-            'user_id'  => $user->id,
+            'userId'  => $user->id,
         ]);
     }
 
@@ -107,16 +107,16 @@ class Account extends ActiveRecord
      */
     public static function find()
     {
-        return \Yii::createObject(AccountQuery::className(), [get_called_class()]);
+        return \Yii::createObject(AccountQuery::class, [get_called_class()]);
     }
 
     public static function create(BaseClientInterface $client)
     {
         /** @var Account $account */
         $account = \Yii::createObject([
-            'class'      => static::className(),
+            'class'      => static::class,
             'provider'   => $client->getId(),
-            'client_id'  => $client->getUserAttributes()['id'],
+            'clientId'  => $client->getUserAttributes()['id'],
             'data'       => Json::encode($client->getUserAttributes()),
         ]);
 
@@ -128,7 +128,7 @@ class Account extends ActiveRecord
         }
 
         if (($user = static::fetchUser($account)) instanceof User) {
-            $account->user_id = $user->id;
+            $account->userId = $user->id;
         }
 
         $account->save(false);
@@ -176,9 +176,9 @@ class Account extends ActiveRecord
 
         if (null === $account) {
             $account = \Yii::createObject([
-                'class'      => static::className(),
+                'class'      => static::class,
                 'provider'   => $client->getId(),
-                'client_id'  => $client->getUserAttributes()['id'],
+                'clientId'  => $client->getUserAttributes()['id'],
                 'data'       => Json::encode($client->getUserAttributes()),
             ]);
             $account->save(false);
@@ -203,7 +203,7 @@ class Account extends ActiveRecord
         }
 
         $user = \Yii::createObject([
-            'class'    => User::className(),
+            'class'    => User::class,
             'scenario' => 'connect',
             'username' => $account->username,
             'email'    => $account->email,
@@ -226,7 +226,7 @@ class Account extends ActiveRecord
     protected static function getFinder()
     {
         if (static::$finder === null) {
-            static::$finder = \Yii::$container->get(Finder::className());
+            static::$finder = \Yii::$container->get(Finder::class);
         }
 
         return static::$finder;

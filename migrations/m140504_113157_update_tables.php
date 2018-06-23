@@ -21,13 +21,13 @@ class m140504_113157_update_tables extends Migration
         // user table
         $this->dropIndex('{{%user_confirmation}}', '{{%user}}');
         $this->dropIndex('{{%user_recovery}}', '{{%user}}');
-        $this->dropColumn('{{%user}}', 'confirmation_token');
-        $this->dropColumn('{{%user}}', 'confirmation_sent_at');
-        $this->dropColumn('{{%user}}', 'recovery_token');
-        $this->dropColumn('{{%user}}', 'recovery_sent_at');
-        $this->dropColumn('{{%user}}', 'logged_in_from');
-        $this->dropColumn('{{%user}}', 'logged_in_at');
-        $this->renameColumn('{{%user}}', 'registered_from', 'registration_ip');
+        $this->dropColumn('{{%user}}', 'confirmationToken');
+        $this->dropColumn('{{%user}}', 'confirmationSentAt');
+        $this->dropColumn('{{%user}}', 'recoveryToken');
+        $this->dropColumn('{{%user}}', 'recoverySentAt');
+        $this->dropColumn('{{%user}}', 'loggedInFrom');
+        $this->dropColumn('{{%user}}', 'loggedInAt');
+        $this->renameColumn('{{%user}}', 'registeredFrom', 'registrationIp');
         $this->addColumn('{{%user}}', 'flags', $this->integer()->notNull()->defaultValue(0));
 
         // account table
@@ -45,14 +45,14 @@ class m140504_113157_update_tables extends Migration
             $this->dropColumnConstraints('{{%user}}', 'flags');
         }
         $this->dropColumn('{{%user}}', 'flags');
-        $this->renameColumn('{{%user}}', 'registration_ip', 'registered_from');
-        $this->addColumn('{{%user}}', 'logged_in_at', $this->integer());
-        $this->addColumn('{{%user}}', 'logged_in_from', $this->integer());
-        $this->addColumn('{{%user}}', 'recovery_sent_at', $this->integer());
-        $this->addColumn('{{%user}}', 'recovery_token', $this->string(32));
-        $this->addColumn('{{%user}}', 'confirmation_sent_at', $this->integer());
-        $this->addColumn('{{%user}}', 'confirmation_token', $this->string(32));
-        $this->createIndex('{{%user_confirmation}}', '{{%user}}', 'id, confirmation_token', true);
-        $this->createIndex('{{%user_recovery}}', '{{%user}}', 'id, recovery_token', true);
+        $this->renameColumn('{{%user}}', 'registrationIp', 'registeredFrom');
+        $this->addColumn('{{%user}}', 'loggedInAt', $this->integer());
+        $this->addColumn('{{%user}}', 'loggedInFrom', $this->integer());
+        $this->addColumn('{{%user}}', 'recoverySentAt', $this->integer());
+        $this->addColumn('{{%user}}', 'recoveryToken', $this->string(32));
+        $this->addColumn('{{%user}}', 'confirmationSentAt', $this->integer());
+        $this->addColumn('{{%user}}', 'confirmationToken', $this->string(32));
+        $this->createIndex('{{%user_confirmation}}', '{{%user}}', 'id, confirmationToken', true);
+        $this->createIndex('{{%user_recovery}}', '{{%user}}', 'id, recoveryToken', true);
     }
 }

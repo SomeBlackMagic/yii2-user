@@ -66,7 +66,7 @@ class LoginForm extends Model
 
         $userModel = $module->modelMap['User'];
 
-        return ArrayHelper::map($userModel::find()->where(['blocked_at' => null])->all(), 'username', function ($user) {
+        return ArrayHelper::map($userModel::find()->where(['blockedAt' => null])->all(), 'username', function ($user) {
             return sprintf('%s (%s)', Html::encode($user->username), Html::encode($user->email));
         });
     }
@@ -111,7 +111,7 @@ class LoginForm extends Model
                 'passwordValidate' => [
                     'password',
                     function ($attribute) {
-                        if ($this->user === null || !Password::validate($this->password, $this->user->password_hash)) {
+                        if ($this->user === null || !Password::validate($this->password, $this->user->passwordHash)) {
                             $this->addError($attribute, Yii::t('user', 'Invalid login or password'));
                         }
                     }
@@ -130,7 +130,7 @@ class LoginForm extends Model
      */
     public function validatePassword($attribute, $params)
     {
-      if ($this->user === null || !Password::validate($this->password, $this->user->password_hash))
+      if ($this->user === null || !Password::validate($this->password, $this->user->passwordHash))
         $this->addError($attribute, Yii::t('user', 'Invalid login or password'));
     }
 
@@ -145,7 +145,7 @@ class LoginForm extends Model
             $isLogged = Yii::$app->getUser()->login($this->user, $this->rememberMe ? $this->module->rememberFor : 0);
 
             if ($isLogged) {
-                $this->user->updateAttributes(['last_login_at' => time()]);
+                $this->user->updateAttributes(['lastLoginAt' => time()]);
             }
 
             return $isLogged;

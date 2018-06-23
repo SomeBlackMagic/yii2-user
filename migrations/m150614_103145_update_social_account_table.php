@@ -1,4 +1,4 @@
-<?php
++<?php
 
 use yii\db\Query;
 use dektrium\user\migrations\Migration;
@@ -8,7 +8,7 @@ class m150614_103145_update_social_account_table extends Migration
     public function up()
     {
         $this->addColumn('{{%social_account}}', 'code', $this->string(32)->null());
-        $this->addColumn('{{%social_account}}', 'created_at', $this->integer()->null());
+        $this->addColumn('{{%social_account}}', 'createdAt', $this->integer()->null());
         $this->addColumn('{{%social_account}}', 'email', $this->string()->null());
         $this->addColumn('{{%social_account}}', 'username', $this->string()->null());
         $this->createIndex('{{%account_unique_code}}', '{{%social_account}}', 'code', true);
@@ -19,7 +19,7 @@ class m150614_103145_update_social_account_table extends Migration
         try {
             foreach ($accounts as $account) {
                 $this->db->createCommand()->update('{{%social_account}}', [
-                    'created_at' => time(),
+                    'createdAt' => time(),
                 ], 'id = ' . $account['id'])->execute();
             }
             $transaction->commit();
@@ -35,6 +35,6 @@ class m150614_103145_update_social_account_table extends Migration
         $this->dropColumn('{{%social_account}}', 'email');
         $this->dropColumn('{{%social_account}}', 'username');
         $this->dropColumn('{{%social_account}}', 'code');
-        $this->dropColumn('{{%social_account}}', 'created_at');
+        $this->dropColumn('{{%social_account}}', 'createdAt');
     }
 }

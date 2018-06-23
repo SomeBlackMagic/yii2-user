@@ -18,11 +18,11 @@ class m140830_171933_fix_ip_field extends Migration
 {
     public function up()
     {
-        $this->alterColumn('{{%user}}', 'registration_ip', $this->bigInteger());
+        $this->alterColumn('{{%user}}', 'registrationIp', $this->bigInteger());
     }
 
     public function down()
     {
-        $this->alterColumn('{{%user}}', 'registration_ip', $this->integer());
+        $this->alterColumn('{{%user}}', 'registrationIp', $this->integer());
     }
 }

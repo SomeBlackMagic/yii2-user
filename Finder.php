@@ -200,7 +200,7 @@ class Finder extends BaseObject
     public function findTokenByParams($userId, $code, $type)
     {
         return $this->findToken([
-            'user_id' => $userId,
+            'userId' => $userId,
             'code'    => $code,
             'type'    => $type,
         ])->one();
@@ -215,7 +215,7 @@ class Finder extends BaseObject
      */
     public function findProfileById($id)
     {
-        return $this->findProfile(['user_id' => $id])->one();
+        return $this->findProfile(['userId' => $id])->one();
     }
 
     /**

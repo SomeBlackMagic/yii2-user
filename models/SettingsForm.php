@@ -63,7 +63,7 @@ class SettingsForm extends Model
         $this->mailer = $mailer;
         $this->setAttributes([
             'username' => $this->user->username,
-            'email'    => $this->user->unconfirmed_email ?: $this->user->email,
+            'email'    => $this->user->unconfirmedEmail ?: $this->user->email,
         ], false);
         parent::__construct($config);
     }
@@ -85,7 +85,7 @@ class SettingsForm extends Model
             'newPasswordLength' => ['new_password', 'string', 'max' => 72, 'min' => 6],
             'currentPasswordRequired' => ['current_password', 'required'],
             'currentPasswordValidate' => ['current_password', function ($attr) {
-                if (!Password::validate($this->$attr, $this->user->password_hash)) {
+                if (!Password::validate($this->$attr, $this->user->passwordHash)) {
                     $this->addError($attr, Yii::t('user', 'Current password is not valid'));
                 }
             }],
@@ -120,8 +120,8 @@ class SettingsForm extends Model
             $this->user->scenario = 'settings';
             $this->user->username = $this->username;
             $this->user->password = $this->new_password;
-            if ($this->email == $this->user->email && $this->user->unconfirmed_email != null) {
-                $this->user->unconfirmed_email = null;
+            if ($this->email == $this->user->email && $this->user->unconfirmedEmail != null) {
+                $this->user->unconfirmedEmail = null;
             } elseif ($this->email != $this->user->email) {
                 switch ($this->module->emailChangeStrategy) {
                     case Module::STRATEGY_INSECURE:
@@ -158,11 +158,11 @@ class SettingsForm extends Model
      */
     protected function defaultEmailChange()
     {
-        $this->user->unconfirmed_email = $this->email;
+        $this->user->unconfirmedEmail = $this->email;
         /** @var Token $token */
         $token = Yii::createObject([
-            'class'   => Token::className(),
-            'user_id' => $this->user->id,
+            'class'   => Token::class,
+            'userId' => $this->user->id,
             'type'    => Token::TYPE_CONFIRM_NEW_EMAIL,
         ]);
         $token->save(false);
@@ -183,8 +183,8 @@ class SettingsForm extends Model
         $this->defaultEmailChange();
         /** @var Token $token */
         $token = Yii::createObject([
-            'class'   => Token::className(),
-            'user_id' => $this->user->id,
+            'class'   => Token::class,
+            'userId' => $this->user->id,
             'type'    => Token::TYPE_CONFIRM_OLD_EMAIL,
         ]);
         $token->save(false);

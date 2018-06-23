@@ -13,7 +13,7 @@ To get started you should configure `authClientCollection` application component
 'components' => [
     ...
     'authClientCollection' => [
-        'class'   => \yii\authclient\Collection::className(),
+        'class'   => \yii\authclient\Collection::class,
         'clients' => [
             // here is the list of clients you want to use
             // you can read more in the "Available clients" section
@@ -85,7 +85,7 @@ Here is the list of clients supported by the module:
 ```php
 'google' => [
     'class'        => 'dektrium\user\clients\Google',
-    'clientId'     => 'CLIENT_ID',
+    'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ],
 ```
@@ -97,7 +97,7 @@ Here is the list of clients supported by the module:
 ```php
 'github' => [
     'class'        => 'dektrium\user\clients\GitHub',
-    'clientId'     => 'CLIENT_ID',
+    'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ],
 ```
@@ -109,7 +109,7 @@ Here is the list of clients supported by the module:
 ```php
 'vkontakte' => [
     'class'        => 'dektrium\user\clients\VKontakte',
-    'clientId'     => 'CLIENT_ID',
+    'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ]
 ```
@@ -123,7 +123,7 @@ Here is the list of clients supported by the module:
 ```php
 'yandex' => [
     'class'        => 'dektrium\user\clients\Yandex',
-    'clientId'     => 'CLIENT_ID',
+    'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET'
 ],
 ```
@@ -135,7 +135,7 @@ Here is the list of clients supported by the module:
 ```php
 'linkedin' => [
     'class'        => 'dektrium\user\clients\LinkedIn',
-    'clientId'     => 'CLIENT_ID',
+    'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET'
 ],
 ```
@@ -151,11 +151,11 @@ The following config allows to log in using 3 networks (Twitter, Facebook and Go
 
 ```php
 'authClientCollection' => [
-    'class' => yii\authclient\Collection::className(),
+    'class' => yii\authclient\Collection::class,
     'clients' => [
         'facebook' => [
             'class'        => 'dektrium\user\clients\Facebook',
-            'clientId'     => 'CLIENT_ID',
+            'clientId'     => 'clientId',
             'clientSecret' => 'CLIENT_SECRET',
         ],
         'twitter' => [
@@ -165,7 +165,7 @@ The following config allows to log in using 3 networks (Twitter, Facebook and Go
         ],
         'google' => [
             'class'        => 'dektrium\user\clients\Google',
-            'clientId'     => 'CLIENT_ID',
+            'clientId'     => 'clientId',
             'clientSecret' => 'CLIENT_SECRET',
         ],
     ],

@@ -102,7 +102,7 @@ class RegistrationController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     ['allow' => true, 'actions' => ['register', 'connect'], 'roles' => ['?']],
                     ['allow' => true, 'actions' => ['confirm', 'resend'], 'roles' => ['?', '@']],
@@ -126,7 +126,7 @@ class RegistrationController extends Controller
         }
 
         /** @var RegistrationForm $model */
-        $model = \Yii::createObject(RegistrationForm::className());
+        $model = \Yii::createObject(RegistrationForm::class);
         $event = $this->getFormEvent($model);
 
         $this->trigger(self::EVENT_BEFORE_REGISTER, $event);
@@ -142,6 +142,7 @@ class RegistrationController extends Controller
             ]);
         }
 
+        
         return $this->render('register', [
             'model'  => $model,
             'module' => $this->module,
@@ -166,7 +167,7 @@ class RegistrationController extends Controller
 
         /** @var User $user */
         $user = \Yii::createObject([
-            'class'    => User::className(),
+            'class'    => User::class,
             'scenario' => 'connect',
             'username' => $account->username,
             'email'    => $account->email,
@@ -234,7 +235,7 @@ class RegistrationController extends Controller
         }
 
         /** @var ResendForm $model */
-        $model = \Yii::createObject(ResendForm::className());
+        $model = \Yii::createObject(ResendForm::class);
         $event = $this->getFormEvent($model);
 
         $this->trigger(self::EVENT_BEFORE_RESEND, $event);

@@ -88,7 +88,7 @@ class RecoveryController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     ['allow' => true, 'actions' => ['request', 'reset'], 'roles' => ['?']],
                 ],
@@ -110,7 +110,7 @@ class RecoveryController extends Controller
 
         /** @var RecoveryForm $model */
         $model = \Yii::createObject([
-            'class'    => RecoveryForm::className(),
+            'class'    => RecoveryForm::class,
             'scenario' => RecoveryForm::SCENARIO_REQUEST,
         ]);
         $event = $this->getFormEvent($model);
@@ -147,7 +147,7 @@ class RecoveryController extends Controller
         }
 
         /** @var Token $token */
-        $token = $this->finder->findToken(['user_id' => $id, 'code' => $code, 'type' => Token::TYPE_RECOVERY])->one();
+        $token = $this->finder->findToken(['userId' => $id, 'code' => $code, 'type' => Token::TYPE_RECOVERY])->one();
         if (empty($token) || ! $token instanceof Token) {
             throw new NotFoundHttpException();
         }
@@ -169,7 +169,7 @@ class RecoveryController extends Controller
 
         /** @var RecoveryForm $model */
         $model = \Yii::createObject([
-            'class'    => RecoveryForm::className(),
+            'class'    => RecoveryForm::class,
             'scenario' => RecoveryForm::SCENARIO_RESET,
         ]);
         $event->setForm($model);

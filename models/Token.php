@@ -19,9 +19,9 @@ use yii\helpers\Url;
 /**
  * Token Active Record model.
  *
- * @property integer $user_id
+ * @property integer $userId
  * @property string  $code
- * @property integer $created_at
+ * @property integer $createdAt
  * @property integer $type
  * @property string  $url
  * @property bool    $isExpired
@@ -43,7 +43,7 @@ class Token extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne($this->module->modelMap['User'], ['id' => 'user_id']);
+        return $this->hasOne($this->module->modelMap['User'], ['id' => 'userId']);
     }
 
     /**
@@ -66,7 +66,7 @@ class Token extends ActiveRecord
                 throw new \RuntimeException();
         }
 
-        return Url::to([$route, 'id' => $this->user_id, 'code' => $this->code], true);
+        return Url::to([$route, 'id' => $this->userId, 'code' => $this->code], true);
     }
 
     /**
@@ -87,15 +87,15 @@ class Token extends ActiveRecord
                 throw new \RuntimeException();
         }
 
-        return ($this->created_at + $expirationTime) < time();
+        return ($this->createdAt + $expirationTime) < time();
     }
 
     /** @inheritdoc */
     public function beforeSave($insert)
     {
         if ($insert) {
-            static::deleteAll(['user_id' => $this->user_id, 'type' => $this->type]);
-            $this->setAttribute('created_at', time());
+            static::deleteAll(['userId' => $this->userId, 'type' => $this->type]);
+            $this->setAttribute('createdAt', time());
             $this->setAttribute('code', Yii::$app->security->generateRandomString());
         }
 
@@ -111,6 +111,6 @@ class Token extends ActiveRecord
     /** @inheritdoc */
     public static function primaryKey()
     {
-        return ['user_id', 'code', 'type'];
+        return ['userId', 'code', 'type'];
     }
 }

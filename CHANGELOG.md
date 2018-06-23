@@ -1,12 +1,12 @@
 # CHANGELOG
 
-- Fix: Update last_login_at when successfully logged in over oauth(#899)
+- Fix: Update lastLoginAt when successfully logged in over oauth(#899)
 
 ## 0.9.12 [11 January 2017]
 
 - Fix: Fixed migrations (dmeroff)
 - Fix #832: Fixed admin view file (thyseus)
-- Enh #839: Order by most recent registration first (created_at DESC) by default (thyseus)
+- Enh #839: Order by most recent registration first (createdAt DESC) by default (thyseus)
 
 ## 0.9.11 [10 January 2017]
 
@@ -14,7 +14,7 @@
 - Enh #794: Allow fast login without password when in DEBUG mode (thyseus)
 - Enh #826: Auth action added to auth rules (faenir)
 - Enh #820: Added ability to switch back to latest user after being impersonated (thyseus)
-- Enh #774: Added last_login_at column to user table (thyseus)
+- Enh #774: Added lastLoginAt column to user table (thyseus)
 
 ## 0.9.10 [8 January 2017]
 
@@ -66,7 +66,7 @@
 - `enh` Remove old user tokens with same type while creating new #340 (dmeroff)
 - `fix` Forbid ability to login via networks for blocked users #434 (dmeroff)
 - `fix` Fixed problems with url rules #351 (dmeroff)
-- `enh` Regenerate `auth_key` after blocking the user (dmeroff)
+- `enh` Regenerate `authKey` after blocking the user (dmeroff)
 - `enh` Improved registration process #236 (dmeroff)
 - `fix` Ensure user/index works without php-intl extension #370 (thyseus)
 - `fix` Fixed display of confirmation time #361 (pedros80)
@@ -141,7 +141,7 @@
 - `fix` Fixed pt_BR translate (thiagotalma)
 - `fix` Fixed relation between User and Profile (anders-akero)
 - `fix` Fixed translations (sosojni)
-- `fix` Added registration_ip label (sosojni)
+- `fix` Added registrationIp label (sosojni)
 
 ## 0.8.1 [13 October 2014] Yii 2.0.0 compatible
 
@@ -154,7 +154,7 @@
 
 - `fix` Updated admin grid view (hoksilato)
 - `fix` Recovery token is now deleted after recovery process (mrarthur)
-- `fix` Registration_ip is now filled with user ip address on registration (mrarthur)
+- `fix` registrationIp is now filled with user ip address on registration (mrarthur)
 - `chg` Refactored email change process (dmeroff)
 - `enh` Added account settings page and removed email and password settings pages (dmeroff)
 - `enh` Added tab index on login page (maxxer)

@@ -25,7 +25,7 @@ To enable console commands, you need to add module into console config of you ap
 - **user/password** Updates user's password.
 
 ### user/confirm
-Confirms a user by setting confirmed_at field to current time.
+Confirms a user by setting confirmedAt field to current time.
 
 ```sh
 

@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ); ?>
 
                 <?= $form
-                    ->field($model, 'gravatar_email')
+                    ->field($model, 'gravatarEmail')
                     ->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
 
                 <?= $form->field($model, 'bio')->textarea() ?>

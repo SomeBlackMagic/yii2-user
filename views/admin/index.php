@@ -44,34 +44,34 @@ $this->params['breadcrumbs'][] = $this->title;
         'username',
         'email:email',
         [
-            'attribute' => 'registration_ip',
+            'attribute' => 'registrationIp',
             'value' => function ($model) {
-                return $model->registration_ip == null
+                return $model->registrationIp == null
                     ? '<span class="not-set">' . Yii::t('user', '(not set)') . '</span>'
-                    : $model->registration_ip;
+                    : $model->registrationIp;
             },
             'format' => 'html',
         ],
         [
-            'attribute' => 'created_at',
+            'attribute' => 'createdAt',
             'value' => function ($model) {
                 if (extension_loaded('intl')) {
-                    return Yii::t('user', '{0, date, MMMM dd, YYYY HH:mm}', [$model->created_at]);
+                    return Yii::t('user', '{0, date, MMMM dd, YYYY HH:mm}', [$model->createdAt]);
                 } else {
-                    return date('Y-m-d G:i:s', $model->created_at);
+                    return date('Y-m-d G:i:s', $model->createdAt);
                 }
             },
         ],
 
         [
-          'attribute' => 'last_login_at',
+          'attribute' => 'lastLoginAt',
           'value' => function ($model) {
-            if (!$model->last_login_at || $model->last_login_at == 0) {
+            if (!$model->lastLoginAt || $model->lastLoginAt == 0) {
                 return Yii::t('user', 'Never');
             } else if (extension_loaded('intl')) {
-                return Yii::t('user', '{0, date, MMMM dd, YYYY HH:mm}', [$model->last_login_at]);
+                return Yii::t('user', '{0, date, MMMM dd, YYYY HH:mm}', [$model->lastLoginAt]);
             } else {
-                return date('Y-m-d G:i:s', $model->last_login_at);
+                return date('Y-m-d G:i:s', $model->lastLoginAt);
             }
           },
         ],

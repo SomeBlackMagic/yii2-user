@@ -41,7 +41,7 @@ class ConfirmController extends Controller
     }
 
     /**
-     * Confirms a user by setting confirmed_at field to current time.
+     * Confirms a user by setting confirmedAt field to current time.
      *
      * @param string $search Email or username
      */

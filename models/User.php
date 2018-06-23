@@ -35,15 +35,15 @@ use yii\helpers\ArrayHelper;
  * @property integer $id
  * @property string  $username
  * @property string  $email
- * @property string  $unconfirmed_email
- * @property string  $password_hash
- * @property string  $auth_key
- * @property string  $registration_ip
- * @property integer $confirmed_at
- * @property integer $blocked_at
- * @property integer $created_at
- * @property integer $updated_at
- * @property integer $last_login_at
+ * @property string  $unconfirmedEmail
+ * @property string  $passwordHash
+ * @property string  $authKey
+ * @property string  $registrationIp
+ * @property integer $confirmedAt
+ * @property integer $blockedAt
+ * @property integer $createdAt
+ * @property integer $updatedAt
+ * @property integer $lastLoginAt
  * @property integer $flags
  *
  * Defined relations:
@@ -87,7 +87,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     protected function getFinder()
     {
-        return \Yii::$container->get(Finder::className());
+        return \Yii::$container->get(Finder::class);
     }
 
     /**
@@ -96,7 +96,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     protected function getMailer()
     {
-        return \Yii::$container->get(Mailer::className());
+        return \Yii::$container->get(Mailer::class);
     }
 
     /**
@@ -104,7 +104,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getIsConfirmed()
     {
-        return $this->confirmed_at != null;
+        return $this->confirmedAt != null;
     }
 
     /**
@@ -112,7 +112,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getIsBlocked()
     {
-        return $this->blocked_at != null;
+        return $this->blockedAt != null;
     }
 
     /**
@@ -131,7 +131,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getProfile()
     {
-        return $this->hasOne($this->module->modelMap['Profile'], ['user_id' => 'id']);
+        return $this->hasOne($this->module->modelMap['Profile'], ['userId' => 'id']);
     }
 
     /**
@@ -148,7 +148,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function getAccounts()
     {
         $connected = [];
-        $accounts  = $this->hasMany($this->module->modelMap['Account'], ['user_id' => 'id'])->all();
+        $accounts  = $this->hasMany($this->module->modelMap['Account'], ['userId' => 'id'])->all();
 
         /** @var Account $account */
         foreach ($accounts as $account) {
@@ -180,7 +180,7 @@ class User extends ActiveRecord implements IdentityInterface
     /** @inheritdoc */
     public function getAuthKey()
     {
-        return $this->getAttribute('auth_key');
+        return $this->getAttribute('authKey');
     }
 
     /** @inheritdoc */
@@ -189,12 +189,12 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             'username'          => \Yii::t('user', 'Username'),
             'email'             => \Yii::t('user', 'Email'),
-            'registration_ip'   => \Yii::t('user', 'Registration ip'),
-            'unconfirmed_email' => \Yii::t('user', 'New email'),
+            'registrationIp'   => \Yii::t('user', 'Registration ip'),
+            'unconfirmedEmail' => \Yii::t('user', 'New email'),
             'password'          => \Yii::t('user', 'Password'),
-            'created_at'        => \Yii::t('user', 'Registration time'),
-            'last_login_at'     => \Yii::t('user', 'Last login'),
-            'confirmed_at'      => \Yii::t('user', 'Confirmation time'),
+            'createdAt'        => \Yii::t('user', 'Registration time'),
+            'lastLoginAt'     => \Yii::t('user', 'Last login'),
+            'confirmedAt'      => \Yii::t('user', 'Confirmation time'),
         ];
     }
 
@@ -202,7 +202,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
         ];
     }
 
@@ -254,7 +254,7 @@ class User extends ActiveRecord implements IdentityInterface
     /** @inheritdoc */
     public function validateAuthKey($authKey)
     {
-        return $this->getAttribute('auth_key') === $authKey;
+        return $this->getAttribute('authKey') === $authKey;
     }
 
     /**
@@ -311,7 +311,7 @@ class User extends ActiveRecord implements IdentityInterface
         $transaction = $this->getDb()->beginTransaction();
 
         try {
-            $this->confirmed_at = $this->module->enableConfirmation ? null : time();
+            $this->confirmedAt = $this->module->enableConfirmation ? null : time();
             $this->password     = $this->module->enableGeneratingPassword ? Password::generate(8) : $this->password;
 
             $this->trigger(self::BEFORE_REGISTER);
@@ -323,7 +323,7 @@ class User extends ActiveRecord implements IdentityInterface
 
             if ($this->module->enableConfirmation) {
                 /** @var Token $token */
-                $token = \Yii::createObject(['class' => Token::className(), 'type' => Token::TYPE_CONFIRMATION]);
+                $token = \Yii::createObject(['class' => Token::class, 'type' => Token::TYPE_CONFIRMATION]);
                 $token->link('user', $this);
             }
 
@@ -379,14 +379,14 @@ class User extends ActiveRecord implements IdentityInterface
     public function resendPassword()
     {
         $this->password = Password::generate(8);
-        $this->save(false, ['password_hash']);
+        $this->save(false, ['passwordHash']);
 
         return $this->mailer->sendGeneratedPassword($this, $this->password);
     }
 
     /**
-     * This method attempts changing user email. If user's "unconfirmed_email" field is empty is returns false, else if
-     * somebody already has email that equals user's "unconfirmed_email" it returns false, otherwise returns true and
+     * This method attempts changing user email. If user's "unconfirmedEmail" field is empty is returns false, else if
+     * somebody already has email that equals user's "unconfirmedEmail" it returns false, otherwise returns true and
      * updates user's password.
      *
      * @param string $code
@@ -400,18 +400,18 @@ class User extends ActiveRecord implements IdentityInterface
 
         /** @var Token $token */
         $token = $this->finder->findToken([
-            'user_id' => $this->id,
+            'userId' => $this->id,
             'code'    => $code,
         ])->andWhere(['in', 'type', [Token::TYPE_CONFIRM_NEW_EMAIL, Token::TYPE_CONFIRM_OLD_EMAIL]])->one();
 
-        if (empty($this->unconfirmed_email) || $token === null || $token->isExpired) {
+        if (empty($this->unconfirmedEmail) || $token === null || $token->isExpired) {
             \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Your confirmation token is invalid or expired'));
         } else {
             $token->delete();
 
-            if (empty($this->unconfirmed_email)) {
+            if (empty($this->unconfirmedEmail)) {
                 \Yii::$app->session->setFlash('danger', \Yii::t('user', 'An error occurred processing your request'));
-            } elseif ($this->finder->findUser(['email' => $this->unconfirmed_email])->exists() == false) {
+            } elseif ($this->finder->findUser(['email' => $this->unconfirmedEmail])->exists() == false) {
                 if ($this->module->emailChangeStrategy == Module::STRATEGY_SECURE) {
                     switch ($token->type) {
                         case Token::TYPE_CONFIRM_NEW_EMAIL:
@@ -438,8 +438,8 @@ class User extends ActiveRecord implements IdentityInterface
                 }
                 if ($this->module->emailChangeStrategy == Module::STRATEGY_DEFAULT
                     || ($this->flags & self::NEW_EMAIL_CONFIRMED && $this->flags & self::OLD_EMAIL_CONFIRMED)) {
-                    $this->email = $this->unconfirmed_email;
-                    $this->unconfirmed_email = null;
+                    $this->email = $this->unconfirmedEmail;
+                    $this->unconfirmedEmail = null;
                     \Yii::$app->session->setFlash('success', \Yii::t('user', 'Your email address has been changed'));
                 }
                 $this->save(false);
@@ -448,12 +448,12 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Confirms the user by setting 'confirmed_at' field to current time.
+     * Confirms the user by setting 'confirmedAt' field to current time.
      */
     public function confirm()
     {
         $this->trigger(self::BEFORE_CONFIRM);
-        $result = (bool) $this->updateAttributes(['confirmed_at' => time()]);
+        $result = (bool) $this->updateAttributes(['confirmedAt' => time()]);
         $this->trigger(self::AFTER_CONFIRM);
         return $result;
     }
@@ -467,26 +467,26 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function resetPassword($password)
     {
-        return (bool)$this->updateAttributes(['password_hash' => Password::hash($password)]);
+        return (bool)$this->updateAttributes(['passwordHash' => Password::hash($password)]);
     }
 
     /**
-     * Blocks the user by setting 'blocked_at' field to current time and regenerates auth_key.
+     * Blocks the user by setting 'blockedAt' field to current time and regenerates authKey.
      */
     public function block()
     {
         return (bool)$this->updateAttributes([
-            'blocked_at' => time(),
-            'auth_key'   => \Yii::$app->security->generateRandomString(),
+            'blockedAt' => time(),
+            'authKey'   => \Yii::$app->security->generateRandomString(),
         ]);
     }
 
     /**
-     * UnBlocks the user by setting 'blocked_at' field to null.
+     * UnBlocks the user by setting 'blockedAt' field to null.
      */
     public function unblock()
     {
-        return (bool)$this->updateAttributes(['blocked_at' => null]);
+        return (bool)$this->updateAttributes(['blockedAt' => null]);
     }
 
     /**
@@ -523,14 +523,14 @@ class User extends ActiveRecord implements IdentityInterface
     public function beforeSave($insert)
     {
         if ($insert) {
-            $this->setAttribute('auth_key', \Yii::$app->security->generateRandomString());
+            $this->setAttribute('authKey', \Yii::$app->security->generateRandomString());
             if (\Yii::$app instanceof WebApplication) {
-                $this->setAttribute('registration_ip', \Yii::$app->request->userIP);
+                $this->setAttribute('registrationIp', \Yii::$app->request->userIP);
             }
         }
 
         if (!empty($this->password)) {
-            $this->setAttribute('password_hash', Password::hash($this->password));
+            $this->setAttribute('passwordHash', Password::hash($this->password));
         }
 
         return parent::beforeSave($insert);
@@ -542,7 +542,7 @@ class User extends ActiveRecord implements IdentityInterface
         parent::afterSave($insert, $changedAttributes);
         if ($insert) {
             if ($this->_profile == null) {
-                $this->_profile = \Yii::createObject(Profile::className());
+                $this->_profile = \Yii::createObject(Profile::class);
             }
             $this->_profile->link('user', $this);
         }

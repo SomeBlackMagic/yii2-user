@@ -44,13 +44,13 @@ class AccountQuery extends ActiveQuery
     }
 
     /**
-     * Finds an account by user_id.
+     * Finds an account by userId.
      * @param  integer      $userId
      * @return AccountQuery
      */
     public function byUser($userId)
     {
-        return $this->andWhere(['user_id' => $userId]);
+        return $this->andWhere(['userId' => $userId]);
     }
 
     /**
@@ -62,7 +62,7 @@ class AccountQuery extends ActiveQuery
     {
         return $this->andWhere([
             'provider'  => $client->getId(),
-            'client_id' => $client->getUserAttributes()['id'],
+            'clientId' => $client->getUserAttributes()['id'],
         ]);
     }
 }

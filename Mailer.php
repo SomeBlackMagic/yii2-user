@@ -223,7 +223,7 @@ class Mailer extends Component
     public function sendReconfirmationMessage(User $user, Token $token)
     {
         if ($token->type == Token::TYPE_CONFIRM_NEW_EMAIL) {
-            $email = $user->unconfirmed_email;
+            $email = $user->unconfirmedEmail;
         } else {
             $email = $user->email;
         }
