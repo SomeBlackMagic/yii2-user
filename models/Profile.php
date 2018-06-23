@@ -19,7 +19,7 @@ use yii\db\ActiveRecord;
  *
  * @property integer $userId
  * @property string  $name
- * @property string  $public_email
+ * @property string  $publicEmail
  * @property string  $gravatarEmail
  * @property string  $gravatarId
  * @property string  $location
@@ -68,11 +68,11 @@ class Profile extends ActiveRecord
         return [
             'bioString'            => ['bio', 'string'],
             'timeZoneValidation'   => ['timezone', 'validateTimeZone'],
-            'publicEmailPattern'   => ['public_email', 'email'],
+            'publicEmailPattern'   => ['publicEmail', 'email'],
             'gravatarEmailPattern' => ['gravatarEmail', 'email'],
             'websiteUrl'           => ['website', 'url'],
             'nameLength'           => ['name', 'string', 'max' => 255],
-            'publicEmailLength'    => ['public_email', 'string', 'max' => 255],
+            'publicEmailLength'    => ['publicEmail', 'string', 'max' => 255],
             'gravatarEmailLength'  => ['gravatarEmail', 'string', 'max' => 255],
             'locationLength'       => ['location', 'string', 'max' => 255],
             'websiteLength'        => ['website', 'string', 'max' => 255],
@@ -86,7 +86,7 @@ class Profile extends ActiveRecord
     {
         return [
             'name'           => \Yii::t('user', 'Name'),
-            'public_email'   => \Yii::t('user', 'Email (public)'),
+            'publicEmail'   => \Yii::t('user', 'Email (public)'),
             'gravatarEmail' => \Yii::t('user', 'Gravatar email'),
             'location'       => \Yii::t('user', 'Location'),
             'website'        => \Yii::t('user', 'Website'),

@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'name') ?>
 
-                <?= $form->field($model, 'public_email') ?>
+                <?= $form->field($model, 'publicEmail') ?>
 
                 <?= $form->field($model, 'website') ?>
 

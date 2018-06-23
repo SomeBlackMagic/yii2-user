@@ -33,7 +33,7 @@ use yii\helpers\Html;
 ]); ?>
 
 <?= $form->field($profile, 'name') ?>
-<?= $form->field($profile, 'public_email') ?>
+<?= $form->field($profile, 'publicEmail') ?>
 <?= $form->field($profile, 'website') ?>
 <?= $form->field($profile, 'location') ?>
 <?= $form->field($profile, 'gravatarEmail') ?>

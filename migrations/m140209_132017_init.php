@@ -46,7 +46,7 @@ class m140209_132017_init extends Migration
         $this->createTable('{{%profile}}', [
             'userId'        => $this->integer()->notNull()->append('PRIMARY KEY'),
             'name'           => $this->string(255)->null(),
-            'public_email'   => $this->string(255)->null(),
+            'publicEmail'   => $this->string(255)->null(),
             'gravatarEmail' => $this->string(255)->null(),
             'gravatarId'    => $this->string(32)->null(),
             'location'       => $this->string(255)->null(),
