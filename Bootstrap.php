@@ -38,8 +38,12 @@ class Bootstrap implements BootstrapInterface
         'RecoveryForm'     => 'dektrium\user\models\RecoveryForm',
         'UserSearch'       => 'dektrium\user\models\UserSearch',
     ];
-
-    /** @inheritdoc */
+    
+    /**
+     * @param \yii\base\Application $app
+     * @throws \yii\base\InvalidConfigException
+     * @throws \yii\di\NotInstantiableException
+     */
     public function bootstrap($app)
     {
         /** @var Module $module */
@@ -105,26 +109,7 @@ class Bootstrap implements BootstrapInterface
 
             Yii::$container->set('dektrium\user\Mailer', $module->mailer);
 
-            $module->debug = $this->ensureCorrectDebugSetting();
+            $module->debug = Yii::$app->getModule('user')->debug;
         }
-    }
-
-    /** Ensure the module is not in DEBUG mode on production environments */
-    public function ensureCorrectDebugSetting()
-    {
-        if (!defined('YII_DEBUG')) {
-            return false;
-        }
-        if (!defined('YII_ENV')) {
-            return false;
-        }
-        if (defined('YII_ENV') && YII_ENV !== 'dev') {
-            return false;
-        }
-        if (defined('YII_DEBUG') && YII_DEBUG !== true) {
-            return false;
-        }
-
-        return Yii::$app->getModule('user')->debug;
     }
 }
