@@ -12,6 +12,8 @@
 namespace dektrium\user\models;
 
 use dektrium\user\Finder;
+use dektrium\user\interfaces\RecoveryFormInterface;
+use dektrium\user\interfaces\TokenModelInterface;
 use dektrium\user\Mailer;
 use yii\base\Model;
 
@@ -20,7 +22,7 @@ use yii\base\Model;
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
-class RecoveryForm extends Model
+class RecoveryForm extends Model implements RecoveryFormInterface
 {
     const SCENARIO_REQUEST = 'request';
     const SCENARIO_RESET = 'reset';
@@ -92,11 +94,12 @@ class RecoveryForm extends Model
             'passwordLength' => ['password', 'string', 'max' => 72, 'min' => 6],
         ];
     }
-
+    
     /**
      * Sends recovery message.
      *
      * @return bool
+     * @throws \yii\base\InvalidConfigException
      */
     public function sendRecoveryMessage()
     {
@@ -121,6 +124,11 @@ class RecoveryForm extends Model
             if (!$this->mailer->sendRecoveryMessage($user, $token)) {
                 return false;
             }
+        } else {
+            \Yii::$app->session->setFlash(
+                'error',
+                \Yii::t('user', 'User not found in DB')
+            );
         }
 
         \Yii::$app->session->setFlash(
@@ -130,15 +138,17 @@ class RecoveryForm extends Model
 
         return true;
     }
-
+    
     /**
      * Resets user's password.
      *
-     * @param Token $token
+     * @param TokenModelInterface $token
      *
      * @return bool
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
-    public function resetPassword(Token $token)
+    public function resetPassword(TokenModelInterface $token)
     {
         if (!$this->validate() || $token->user === null) {
             return false;

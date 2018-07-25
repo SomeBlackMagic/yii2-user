@@ -26,6 +26,7 @@ class Password
      * @param $password
      *
      * @return string
+     * @throws \yii\base\Exception
      */
     public static function hash($password)
     {

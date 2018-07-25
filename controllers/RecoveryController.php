@@ -95,12 +95,14 @@ class RecoveryController extends Controller
             ],
         ];
     }
-
+    
     /**
      * Shows page where user can request password recovery.
      *
      * @return string
-     * @throws \yii\web\NotFoundHttpException
+     * @throws NotFoundHttpException
+     * @throws \yii\base\ExitException
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionRequest()
     {

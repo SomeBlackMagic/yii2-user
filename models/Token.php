@@ -11,6 +11,7 @@
 
 namespace dektrium\user\models;
 
+use dektrium\user\interfaces\TokenModelInterface;
 use dektrium\user\traits\ModuleTrait;
 use Yii;
 use yii\db\ActiveRecord;
@@ -29,7 +30,7 @@ use yii\helpers\Url;
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
-class Token extends ActiveRecord
+class Token extends ActiveRecord implements TokenModelInterface
 {
     use ModuleTrait;
 
