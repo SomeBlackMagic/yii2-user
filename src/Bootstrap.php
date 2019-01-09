@@ -63,9 +63,9 @@ class Bootstrap implements BootstrapInterface
             ]);
 
             if ($app instanceof ConsoleApplication) {
-                $module->controllerNamespace = 'SomeBlackMagic\Yii2User\Commands';
+                $module->controllerNamespace = __NAMESPACE__.'\Commands';
             } else {
-                $module->controllerNamespace = 'SomeBlackMagic\Yii2User\Controllers';
+                $module->controllerNamespace = __NAMESPACE__.'\Controllers';
                 Yii::$container->set(yii\web\User::class, [
                     'enableAutoLogin' => true,
                     'loginUrl'        => ['/user/security/login'],
@@ -131,6 +131,5 @@ class Bootstrap implements BootstrapInterface
             }
         }
     }
-
 
 }

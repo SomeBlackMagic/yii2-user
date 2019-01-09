@@ -1,6 +1,6 @@
 <?php
 
-use \dektrium\user\models\Token;
+use \SomeBlackMagic\Yii2User\models\Token;
 
 $time = time();
 

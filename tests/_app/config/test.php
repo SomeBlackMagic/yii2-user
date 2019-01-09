@@ -10,10 +10,10 @@ return [
         '@vendor' => VENDOR_DIR,
         '@bower' => VENDOR_DIR . '/bower-asset',
     ],
-    'bootstrap' => ['dektrium\user\Bootstrap'],
+    'bootstrap' => ['SomeBlackMagic\Yii2User\Bootstrap'],
     'modules' => [
         'user' => [
-            'class' => 'dektrium\user\Module',
+            'class' => 'SomeBlackMagic\Yii2User\Module',
             'admins' => ['user'],
         ],
     ],

@@ -16,7 +16,7 @@
         "php": ">=7.1",
         "yiisoft/yii2": "^2.0.13",
         "yiisoft/yii2-swiftmailer": "^2.0.0",
-        "yiisoft/yii2-authclient": "^2.1.0",
+        "yiisoft/yii2-authclient": "^2.0.0",
         "yiisoft/yii2-bootstrap": "^2.0.0"
     },
     "require-dev": {
@@ -32,7 +32,7 @@
     "extra": {
         "bootstrap": "SomeBlackMagic\\Yii2User\\Bootstrap",
         "branch-alias": {
-            "dev-master": "0.9.x-dev",
+            "dev-master": "master",
             "dev-develop": "1.0.x-dev"
         }
     }

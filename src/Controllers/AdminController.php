@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace SomeBlackMagic\Yii2User\controllers;
+namespace SomeBlackMagic\Yii2User\Controllers;
 
 use SomeBlackMagic\Yii2User\Filters\AccessRule;
 use SomeBlackMagic\Yii2User\Finder;

@@ -118,4 +118,9 @@ class Module extends BaseModule
     {
         return \Yii::$app->get($this->dbConnection);
     }
+
+    public function getViewPath()
+    {
+        return $this->getBasePath() . DIRECTORY_SEPARATOR . 'Views';
+    }
 }
