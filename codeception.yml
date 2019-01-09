@@ -15,16 +15,4 @@ modules:
 coverage:
     enabled: true
     include:
-            - ../clients/*
-            - ../controllers/*
-            - ../events/*
-            - ../filters/*
-            - ../helpers/*
-            - ../models/*
-            - ../traits/*
-            - ../views/*
-            - ../widgets/*
-            - ../Bootstrap.php
-            - ../Module.php
-            - ../Mailer.php
-            - ../Finder.php
+            - src/*

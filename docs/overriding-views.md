@@ -10,7 +10,7 @@ configure your view application component as follows:
     'view' => [
         'theme' => [
             'pathMap' => [
-                '@dektrium/user/views' => '@app/views/user'
+                '@someblackmagic/user/Views' => '@app/views/user'
             ],
         ],
     ],
@@ -18,7 +18,7 @@ configure your view application component as follows:
 ...
 ```
 
-In the above `pathMap` means that every view in @dektrium/user/views will be first searched under `@app/views/user` and
+In the above `pathMap` means that every view in @someblackmagic/user/Views will be first searched under `@app/views/user` and
 if a view exists in the theme directory it will be used instead of the original view.
 
 ## Example
