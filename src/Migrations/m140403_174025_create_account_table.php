@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use SomeBlackMagic\Yii2User\migrations\Migration;
+use SomeBlackMagic\Yii2User\Migrations\Migration;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com
@@ -20,9 +20,9 @@ class m140403_174025_create_account_table extends Migration
     {
         $this->createTable('{{%account}}', [
             'id'         => $this->primaryKey(),
-            'userId'    => $this->integer()->null(),
+            'userId'     => $this->integer()->null(),
             'provider'   => $this->string()->notNull(),
-            'clientId'  => $this->string()->notNull(),
+            'clientId'   => $this->string()->notNull(),
             'properties' => $this->text()->null(),
         ], $this->tableOptions);
 

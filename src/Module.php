@@ -112,7 +112,7 @@ class Module extends BaseModule
     ];
 
     /**
-     * @return string
+     * @return object|null
      */
     public function getDb()
     {

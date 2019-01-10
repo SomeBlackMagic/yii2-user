@@ -11,7 +11,7 @@
 
 namespace SomeBlackMagic\Yii2User;
 
-use SomeBlackMagic\Yii2User\Models\query\AccountQuery;
+use SomeBlackMagic\Yii2User\Models\Query\AccountQuery;
 use SomeBlackMagic\Yii2User\Models\Token;
 use yii\base\BaseObject;
 use yii\db\ActiveQuery;

@@ -47,7 +47,7 @@ class Mailer extends Component
     /** @var string */
     protected $recoverySubject;
 
-    /** @var \dektrium\user\Module */
+    /** @var Module */
     protected $module;
 
     /**
@@ -166,7 +166,7 @@ class Mailer extends Component
      *
      * @return bool
      */
-    public function sendWelcomeMessage(User $user, Token $token = null, $showPassword = false)
+    public function sendWelcomeMessage(User $user, Token $token = null, bool $showPassword = false)
     {
         return $this->sendMessage(
             $user->email,

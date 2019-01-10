@@ -17,6 +17,7 @@ use yii\base\Application;
 use yii\base\BootstrapInterface;
 use yii\console\Application as ConsoleApplication;
 use yii\i18n\PhpMessageSource;
+use yii\web\User;
 
 /**
  * Bootstrap class registers module and user application component. It also creates some url rules which will be applied
@@ -66,25 +67,13 @@ class Bootstrap implements BootstrapInterface
                 $module->controllerNamespace = __NAMESPACE__.'\Commands';
             } else {
                 $module->controllerNamespace = __NAMESPACE__.'\Controllers';
-                Yii::$container->set(yii\web\User::class, [
+                Yii::$container->set($this->getUserClassName(), [
                     'enableAutoLogin' => true,
                     'loginUrl'        => ['/user/security/login'],
                     'identityClass'   => $module->modelMap['User'],
                 ]);
+                $this->configureRouter($app, $module);
 
-                $configUrlRule = [
-                    'prefix' => $module->urlPrefix,
-                    'rules'  => $module->urlRules,
-                ];
-
-                if ($module->urlPrefix != 'user') {
-                    $configUrlRule['routePrefix'] = 'user';
-                }
-
-                $configUrlRule['class'] = yii\web\GroupUrlRule::class;
-                $rule = Yii::createObject($configUrlRule);
-
-                $app->urlManager->addRules([$rule], false);
 
                 if (!$app->has('authClientCollection')) {
                     $app->set('authClientCollection', [
@@ -130,6 +119,30 @@ class Bootstrap implements BootstrapInterface
                 });
             }
         }
+    }
+
+
+    protected function configureRouter(Application $app, Module $module) {
+        $configUrlRule = [
+            'prefix' => $module->urlPrefix,
+            'rules'  => $module->urlRules,
+        ];
+
+        if ($module->urlPrefix != 'user') {
+            $configUrlRule['routePrefix'] = 'user';
+        }
+
+        $configUrlRule['class'] = \yii\web\GroupUrlRule::class;
+        $rule = Yii::createObject($configUrlRule);
+
+        $app->urlManager->addRules([$rule], false);
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserClassName(): string  {
+        return User::class;
     }
 
 }

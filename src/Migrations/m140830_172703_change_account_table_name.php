@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use SomeBlackMagic\Yii2User\migrations\Migration;
+use SomeBlackMagic\Yii2User\Migrations\Migration;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>

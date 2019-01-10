@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use SomeBlackMagic\Yii2User\migrations\Migration;
+use SomeBlackMagic\Yii2User\Migrations\Migration;
 use yii\db\Query;
 
 class m141222_110026_update_ip_field extends Migration

@@ -30,7 +30,6 @@
         }
     },
     "extra": {
-        "bootstrap": "SomeBlackMagic\\Yii2User\\Bootstrap",
         "branch-alias": {
             "dev-master": "master",
             "dev-develop": "1.0.x-dev"

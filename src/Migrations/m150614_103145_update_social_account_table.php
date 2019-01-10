@@ -1,7 +1,7 @@
-+<?php
+<?php
 
+use SomeBlackMagic\Yii2User\Migrations\Migration;
 use yii\db\Query;
-use SomeBlackMagic\Yii2User\migrations\Migration;
 
 class m150614_103145_update_social_account_table extends Migration
 {

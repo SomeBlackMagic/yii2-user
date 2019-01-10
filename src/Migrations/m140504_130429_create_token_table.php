@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use SomeBlackMagic\Yii2User\migrations\Migration;
+use SomeBlackMagic\Yii2User\Migrations\Migration;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>
@@ -20,9 +20,9 @@ class m140504_130429_create_token_table extends Migration
     {
         $this->createTable('{{%token}}', [
             'userId'    => $this->integer()->notNull(),
-            'code'       => $this->string(32)->notNull(),
+            'code'      => $this->string(32)->notNull(),
             'createdAt' => $this->integer()->notNull(),
-            'type'       => $this->smallInteger()->notNull(),
+            'type'      => $this->smallInteger()->notNull(),
         ], $this->tableOptions);
 
         $this->createIndex('{{%token_unique}}', '{{%token}}', ['userId', 'code', 'type'], true);

@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-use SomeBlackMagic\Yii2User\migrations\Migration;
+use SomeBlackMagic\Yii2User\Migrations\Migration;
 
 class m151218_234654_add_timezone_to_profile extends Migration
 {

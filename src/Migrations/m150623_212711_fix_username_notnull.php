@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use SomeBlackMagic\Yii2User\migrations\Migration;
+use SomeBlackMagic\Yii2User\Migrations\Migration;
 
 class m150623_212711_fix_username_notnull extends Migration
 {
