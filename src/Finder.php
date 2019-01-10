@@ -96,7 +96,7 @@ class Finder extends BaseObject
      *
      * @param int $id User id to be used on search.
      *
-     * @return models\User
+     * @return Models\User
      */
     public function findUserById($id)
     {
@@ -108,7 +108,7 @@ class Finder extends BaseObject
      *
      * @param string $username Username to be used on search.
      *
-     * @return models\User
+     * @return Models\User
      */
     public function findUserByUsername($username)
     {
@@ -120,7 +120,7 @@ class Finder extends BaseObject
      *
      * @param string $email Email to be used on search.
      *
-     * @return models\User
+     * @return Models\User
      */
     public function findUserByEmail($email)
     {
@@ -132,7 +132,7 @@ class Finder extends BaseObject
      *
      * @param string $usernameOrEmail Username or email to be used on search.
      *
-     * @return models\User
+     * @return Models\User
      */
     public function findUserByUsernameOrEmail($usernameOrEmail)
     {
@@ -168,7 +168,7 @@ class Finder extends BaseObject
      *
      * @param int $id
      *
-     * @return models\Account|null
+     * @return Models\Account|null
      */
     public function findAccountById($id)
     {
