@@ -10,8 +10,8 @@ use tests\_pages\RecoveryPage;
 use tests\_pages\LoginPage;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use SomeBlackMagic\Yii2User\models\User;
-use SomeBlackMagic\Yii2User\models\Token;
+use SomeBlackMagic\Yii2User\Models\User;
+use SomeBlackMagic\Yii2User\Models\Token;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that password recovery works');

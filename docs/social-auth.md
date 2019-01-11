@@ -14,9 +14,9 @@ To get started you should configure `authClientCollection` application component
     ...
     'authClientCollection' => [
         'class'   => \yii\authclient\Collection::class,
-        'clients' => [
-            // here is the list of clients you want to use
-            // you can read more in the "Available clients" section
+        'Clients' => [
+            // here is the list of Clients you want to use
+            // you can read more in the "Available Clients" section
         ],
     ],
     ...
@@ -24,9 +24,9 @@ To get started you should configure `authClientCollection` application component
 ...
 ```
 
-## Available clients
+## Available Clients
 
-Here is the list of clients supported by the module:
+Here is the list of Clients supported by the module:
 
 - [Facebook](#facebook)
 - [Twitter](#twitter)
@@ -42,7 +42,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'facebook' => [
-    'class'        => 'dektrium\user\clients\Facebook',
+    'class'        => \SomeBlackMagic\Yii2User\Clients\Facebook::class,
     'clientId'     => 'APP_ID',
     'clientSecret' => 'APP_SECRET',
 ],
@@ -56,7 +56,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'twitter' => [
-    'class'          => 'dektrium\user\clients\Twitter',
+    'class'          => \SomeBlackMagic\Yii2User\Clients\Twitter::class,
     'consumerKey'    => 'CONSUMER_KEY',
     'consumerSecret' => 'CONSUMER_SECRET',
 ],
@@ -65,7 +65,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'twitter' => [
-    'class'          => 'dektrium\user\clients\Twitter',
+    'class'          => \SomeBlackMagic\Yii2User\Clients\Twitter::class,
     'consumerKey'    => 'CONSUMER_KEY',
     'consumerSecret' => 'CONSUMER_SECRET',
     'attributeParams' => [
@@ -84,7 +84,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'google' => [
-    'class'        => 'dektrium\user\clients\Google',
+    'class'        => \SomeBlackMagic\Yii2User\Clients\Google::class,
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ],
@@ -96,7 +96,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'github' => [
-    'class'        => 'dektrium\user\clients\GitHub',
+    'class'        => \SomeBlackMagic\Yii2User\Clients\GitHub::class,
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ],
@@ -108,7 +108,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'vkontakte' => [
-    'class'        => 'dektrium\user\clients\VKontakte',
+    'class'        => \SomeBlackMagic\Yii2User\Clients\VKontakte::class,
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ]
@@ -122,7 +122,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'yandex' => [
-    'class'        => 'dektrium\user\clients\Yandex',
+    'class'        => \SomeBlackMagic\Yii2User\Clients\Yandex::class,
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET'
 ],
@@ -134,7 +134,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'linkedin' => [
-    'class'        => 'dektrium\user\clients\LinkedIn',
+    'class'        => \SomeBlackMagic\Yii2User\Clients\LinkedIn::class,
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET'
 ],
@@ -152,19 +152,19 @@ The following config allows to log in using 3 networks (Twitter, Facebook and Go
 ```php
 'authClientCollection' => [
     'class' => yii\authclient\Collection::class,
-    'clients' => [
+    'Clients' => [
         'facebook' => [
-            'class'        => 'dektrium\user\clients\Facebook',
+            'class'        => \SomeBlackMagic\Yii2User\Clients\Facebook::class,
             'clientId'     => 'clientId',
             'clientSecret' => 'CLIENT_SECRET',
         ],
         'twitter' => [
-            'class'          => 'dektrium\user\clients\Twitter',
+            'class'          => \SomeBlackMagic\Yii2User\Clients\Twitter::class,
             'consumerKey'    => 'CONSUMER_KEY',
             'consumerSecret' => 'CONSUMER_SECRET',
         ],
         'google' => [
-            'class'        => 'dektrium\user\clients\Google',
+            'class'        => \SomeBlackMagic\Yii2User\Clients\Google::class,
             'clientId'     => 'clientId',
             'clientSecret' => 'CLIENT_SECRET',
         ],
@@ -181,7 +181,7 @@ with the name provided via facebook:
 // plase this code somewhere in your config files (bootstrap.php in case of using advanced app template, web.php in case
 // of using basic app template
 
-use dektrium\user\controllers\SecurityController; 
+use SomeBlackMagic\Yii2User\Controllers\SecurityController; 
 
 Event::on(SecurityController::class, SecurityController::EVENT_AFTER_AUTHENTICATE, function (AuthEvent $e) {
     // if user account was not created we should not continue

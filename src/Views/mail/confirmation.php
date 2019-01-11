@@ -12,8 +12,8 @@
 use yii\helpers\Html;
 
 /**
- * @var dektrium\user\Models\User $user
- * @var dektrium\user\Models\Token $token
+ * @var SomeBlackMagic\Yii2User\Models\User $user
+ * @var SomeBlackMagic\Yii2User\Models\Token $token
  */
 ?>
 <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">

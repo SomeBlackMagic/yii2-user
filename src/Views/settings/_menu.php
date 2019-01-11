@@ -13,7 +13,7 @@ use yii\helpers\Html;
 use SomeBlackMagic\Yii2User\Widgets\UserMenu;
 
 /**
- * @var dektrium\user\Models\User $user
+ * @var SomeBlackMagic\Yii2User\Models\User $user
  */
 
 $user = Yii::$app->user->identity;

@@ -1,6 +1,6 @@
 <?php
 
-use \SomeBlackMagic\Yii2User\models\Token;
+use \SomeBlackMagic\Yii2User\Models\Token;
 
 $time = time();
 

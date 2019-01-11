@@ -6,7 +6,7 @@ use yii\test\ActiveFixture;
 
 class ProfileFixture extends ActiveFixture
 {
-    public $modelClass = 'SomeBlackMagic\Yii2User\models\Profile';
+    public $modelClass = 'SomeBlackMagic\Yii2User\Models\Profile';
 
     public $depends = [
         'tests\_fixtures\UserFixture'

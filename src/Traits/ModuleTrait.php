@@ -8,7 +8,7 @@ use SomeBlackMagic\Yii2User\Module;
  * Trait ModuleTrait
  *
  * @property-read Module $module
- * @package dektrium\user\Traits
+ * @package SomeBlackMagic\Yii2User\Traits
  */
 trait ModuleTrait
 {

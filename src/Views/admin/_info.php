@@ -11,7 +11,7 @@
 
 /**
  * @var yii\web\View $this
- * @var dektrium\user\Models\User $user
+ * @var SomeBlackMagic\Yii2User\Models\User $user
  */
 ?>
 

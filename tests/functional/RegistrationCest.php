@@ -1,8 +1,8 @@
 <?php
 
 
-use SomeBlackMagic\Yii2User\models\Token;
-use SomeBlackMagic\Yii2User\models\User;
+use SomeBlackMagic\Yii2User\Models\Token;
+use SomeBlackMagic\Yii2User\Models\User;
 use SomeBlackMagic\Yii2User\Module;
 use tests\_fixtures\UserFixture;
 use tests\_pages\LoginPage;

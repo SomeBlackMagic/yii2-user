@@ -19,7 +19,7 @@ use yii\helpers\Console;
 /**
  * Creates new user account.
  *
- * @property \dektrium\user\Module $module
+ * @property \SomeBlackMagic\Yii2User\Module $module
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */

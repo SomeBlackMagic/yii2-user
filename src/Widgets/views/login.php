@@ -16,7 +16,7 @@ use yii\helpers\Html;
 /**
  * @var yii\web\View                   $this
  * @var yii\widgets\ActiveForm         $form
- * @var dektrium\user\Models\LoginForm $model
+ * @var SomeBlackMagic\Yii2User\Models\LoginForm $model
  * @var string                         $action
  */
 

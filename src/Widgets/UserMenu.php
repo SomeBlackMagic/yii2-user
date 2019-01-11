@@ -21,7 +21,7 @@ use yii\base\Widget;
 class UserMenu extends Widget
 {
     
-    /** @array \dektrium\user\Models\RegistrationForm */
+    /** @array \SomeBlackMagic\Yii2User\Models\RegistrationForm */
     public $items;
     
     public function init()

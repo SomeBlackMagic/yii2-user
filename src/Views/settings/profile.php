@@ -17,7 +17,7 @@ use yii\helpers\ArrayHelper;
 /**
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
- * @var dektrium\user\Models\Profile $model
+ * @var SomeBlackMagic\Yii2User\Models\Profile $model
  */
 
 $this->title = Yii::t('user', 'Profile settings');

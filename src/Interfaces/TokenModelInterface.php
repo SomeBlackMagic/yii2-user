@@ -9,7 +9,7 @@ namespace SomeBlackMagic\Yii2User\Interfaces;
 
 /**
  * Interface TokenModelInterface
- * @package dektrium\user\interfaces
+ * @package SomeBlackMagic\Yii2User\Interfaces
  */
 interface TokenModelInterface extends BaseModelInterface
 {

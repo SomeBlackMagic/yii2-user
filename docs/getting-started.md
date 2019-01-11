@@ -24,7 +24,7 @@ Add following lines to your main configuration file:
 ```php
 'modules' => [
     'user' => [
-        'class' => 'dektrium\user\Module',
+        'class' => \SomeBlackMagic\Yii2User\Module::class,
     ],
 ],
 ```

@@ -10,7 +10,7 @@
  */
 
 /**
- * @var dektrium\user\Models\User
+ * @var SomeBlackMagic\Yii2User\Models\User
  */
 ?>
 <?= Yii::t('user', 'Hello') ?>,

@@ -13,7 +13,7 @@ Here is an example of how to use access rule in your access control filter:
 namespace app\controllers;
 
 use yii\filters\AccessControl;
-use dektrium\user\filters\AccessRule;
+use SomeBlackMagic\Yii2User\Filters\AccessRule;
 use yii\web\Controller;
 
 class SiteController extends Controller

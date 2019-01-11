@@ -4,8 +4,8 @@
  * @var Codeception\Scenario $scenario
  */
 
-use SomeBlackMagic\Yii2User\models\Token;
-use SomeBlackMagic\Yii2User\models\User;
+use SomeBlackMagic\Yii2User\Models\Token;
+use SomeBlackMagic\Yii2User\Models\User;
 use tests\_fixtures\ProfileFixture;
 use tests\_fixtures\UserFixture;
 use tests\_pages\LoginPage;

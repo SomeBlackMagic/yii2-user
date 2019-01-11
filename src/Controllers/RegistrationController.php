@@ -25,7 +25,7 @@ use yii\web\NotFoundHttpException;
  * RegistrationController is responsible for all registration process, which includes registration of a new account,
  * resending confirmation tokens, email confirmation and registration via social networks.
  *
- * @property \dektrium\user\Module $module
+ * @property \SomeBlackMagic\Yii2User\Module $module
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
@@ -36,49 +36,49 @@ class RegistrationController extends Controller
 
     /**
      * Event is triggered after creating RegistrationForm class.
-     * Triggered with \dektrium\user\events\FormEvent.
+     * Triggered with \SomeBlackMagic\Yii2User\Events\FormEvent.
      */
     const EVENT_BEFORE_REGISTER = 'beforeRegister';
 
     /**
      * Event is triggered after successful registration.
-     * Triggered with \dektrium\user\events\FormEvent.
+     * Triggered with \SomeBlackMagic\Yii2User\Events\FormEvent.
      */
     const EVENT_AFTER_REGISTER = 'afterRegister';
 
     /**
      * Event is triggered before connecting user to social account.
-     * Triggered with \dektrium\user\events\UserEvent.
+     * Triggered with \SomeBlackMagic\Yii2User\Events\UserEvent.
      */
     const EVENT_BEFORE_CONNECT = 'beforeConnect';
 
     /**
      * Event is triggered after connecting user to social account.
-     * Triggered with \dektrium\user\events\UserEvent.
+     * Triggered with \SomeBlackMagic\Yii2User\Events\UserEvent.
      */
     const EVENT_AFTER_CONNECT = 'afterConnect';
 
     /**
      * Event is triggered before confirming user.
-     * Triggered with \dektrium\user\events\UserEvent.
+     * Triggered with \SomeBlackMagic\Yii2User\Events\UserEvent.
      */
     const EVENT_BEFORE_CONFIRM = 'beforeConfirm';
 
     /**
      * Event is triggered before confirming user.
-     * Triggered with \dektrium\user\events\UserEvent.
+     * Triggered with \SomeBlackMagic\Yii2User\Events\UserEvent.
      */
     const EVENT_AFTER_CONFIRM = 'afterConfirm';
 
     /**
      * Event is triggered after creating ResendForm class.
-     * Triggered with \dektrium\user\events\FormEvent.
+     * Triggered with \SomeBlackMagic\Yii2User\Events\FormEvent.
      */
     const EVENT_BEFORE_RESEND = 'beforeResend';
 
     /**
      * Event is triggered after successful resending of confirmation email.
-     * Triggered with \dektrium\user\events\FormEvent.
+     * Triggered with \SomeBlackMagic\Yii2User\Events\FormEvent.
      */
     const EVENT_AFTER_RESEND = 'afterResend';
 

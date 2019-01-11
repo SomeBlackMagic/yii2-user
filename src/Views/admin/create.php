@@ -15,7 +15,7 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var dektrium\user\Models\User $user
+ * @var SomeBlackMagic\Yii2User\Models\User $user
  */
 
 $this->title = Yii::t('user', 'Create a user account');

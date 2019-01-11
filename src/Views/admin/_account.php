@@ -14,7 +14,7 @@ use yii\helpers\Html;
 
 /**
  * @var yii\web\View $this
- * @var dektrium\user\Models\User $user
+ * @var SomeBlackMagic\Yii2UserModels\User $user
  */
 ?>
 

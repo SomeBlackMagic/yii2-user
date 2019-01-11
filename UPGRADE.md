@@ -24,7 +24,7 @@ component class you should set in `user` application component configuration:
 ```php
 'components' => [
     'user' => [
-        'class' => 'your\web\User',
+        'class' => \your\web\User::class,
     ],
 ],
 ```
@@ -37,11 +37,11 @@ should set them via `modelMap` module's property.
 ```php
 'modules' => [
     'user' => [
-        'class' => 'dektrium\user\Module',
+        'class' => \SomeBlackMagic\Yii2User\Module::class,
         'components' => [
             'manager' => [
-                'User' => 'your\model\User',
-                'Profile' => 'your\model\Profile',
+                'User' => \your\model\User::class,
+                'Profile' => \your\model\Profile::class,
                 ...
             ],
         ],
@@ -54,10 +54,9 @@ should set them via `modelMap` module's property.
 ```php
 'modules' => [
     'user' => [
-        'class' => 'dektrium\user\Module',
+        'class' => \SomeBlackMagic\Yii2User\Module::class,
         'modelMap' => [
-            'User' => 'your\model\User',
-            'Profile' => 'your\model\Profile',
+            'User' => \your\model\Use::class',
             ...
         ],
     ],
@@ -72,7 +71,7 @@ module property. You can read more about mailer configuration [here](docs/mailer
 ```php
 'modules' => [
     'user' => [
-        'class' => 'dektrium\user\Module',
+        'class' => \SomeBlackMagic\Yii2User\Module::class,
         'components' => [
             'mailer' => [
                 'sender' => 'noreply@myhost.com',
@@ -87,7 +86,7 @@ module property. You can read more about mailer configuration [here](docs/mailer
 ```php
 'modules' => [
     'user' => [
-        'class' => 'dektrium\user\Module',
+        'class' => \SomeBlackMagic\Yii2User\Module::class,
         'mailer' => [
             'sender' => 'noreply@myhost.com',
         ],
