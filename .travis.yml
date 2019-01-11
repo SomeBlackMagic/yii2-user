@@ -3,6 +3,7 @@ language: php
 php:
   - 7.1
   - 7.2
+  - 7.3
 # environment variable used in test suite
 env: TEST_ENVIRONMENT=travis
 dist: precise
@@ -19,7 +20,7 @@ cache:
 # install dependencies
 install:
   - travis_retry composer self-update
-  - travis_retry composer global require "codeception/codeception:2.2.5"
+  - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.0"
   - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.0"
   - travis_retry composer install --prefer-dist
 
