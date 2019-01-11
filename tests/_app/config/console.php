@@ -4,7 +4,7 @@ return [
     'id' => 'yii2-test-console',
     'basePath' => dirname(__DIR__),
     'aliases' => [
-        '@someblackmagic/user' => dirname(dirname(dirname(__DIR__))),
+        '@SomeBlackMagic/Yii2User' => dirname(dirname(dirname(__DIR__))),
         '@tests' => dirname(dirname(__DIR__)),
     ],
     'components' => [

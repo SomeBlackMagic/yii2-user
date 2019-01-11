@@ -58,7 +58,7 @@ class User extends \dektrium\user\models\User
 
 ## Adding field to the admin form
 
-You should override view file `@someblackmagic/user/Views/admin/_user.php` as described in [special guide](overriding-views.md)
+You should override view file `@SomeBlackMagic/Yii2User/Views/admin/_user.php` as described in [special guide](overriding-views.md)
 with the following content:
 
 ```php

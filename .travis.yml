@@ -25,7 +25,7 @@ install:
 
 before_script:
   - mysql -e 'create database dektrium_test;'
-  - php tests/_app/yii.php migrate --migrationPath=@someblackmagic/user/migrations --interactive=0
+  - php tests/_app/yii.php migrate --migrationPath=@SomeBlackMagic/Yii2User/Migrations --interactive=0
   - ~/.composer/vendor/bin/codecept build
 
 script: ~/.composer/vendor/bin/codecept run

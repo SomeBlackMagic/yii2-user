@@ -10,7 +10,7 @@ configure your view application component as follows:
     'view' => [
         'theme' => [
             'pathMap' => [
-                '@someblackmagic/user/Views' => '@app/views/user'
+                '@SomeBlackMagic/Yii2User/Views' => '@app/views/user'
             ],
         ],
     ],
@@ -18,7 +18,7 @@ configure your view application component as follows:
 ...
 ```
 
-In the above `pathMap` means that every view in @someblackmagic/user/Views will be first searched under `@app/views/user` and
+In the above `pathMap` means that every view in @SomeBlackMagic/Yii2User/Views will be first searched under `@app/views/user` and
 if a view exists in the theme directory it will be used instead of the original view.
 
 ## Example

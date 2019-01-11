@@ -17,7 +17,7 @@ use SomeBlackMagic\rbac\widgets\Assignments;
  */
 ?>
 
-<?php $this->beginContent('@someblackmagic/user/Views/admin/update.php', ['user' => $user]) ?>
+<?php $this->beginContent('@SomeBlackMagic/Yii2User/Views/admin/update.php', ['user' => $user]) ?>
 
 <?= yii\bootstrap\Alert::widget([
     'options' => [
