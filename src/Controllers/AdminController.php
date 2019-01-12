@@ -199,6 +199,7 @@ class AdminController extends Controller
      * Lists all User models.
      *
      * @return mixed
+     * @throws yii\base\InvalidConfigException
      */
     public function actionIndex()
     {
@@ -217,6 +218,8 @@ class AdminController extends Controller
      * If creation is successful, the browser will be redirected to the 'index' page.
      *
      * @return mixed
+     * @throws ExitException
+     * @throws yii\base\InvalidConfigException
      */
     public function actionCreate()
     {
@@ -247,6 +250,8 @@ class AdminController extends Controller
      * @param int $id
      *
      * @return mixed
+     * @throws ExitException
+     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
@@ -275,6 +280,9 @@ class AdminController extends Controller
      * @param int $id
      *
      * @return mixed
+     * @throws ExitException
+     * @throws NotFoundHttpException
+     * @throws yii\base\InvalidConfigException
      */
     public function actionUpdateProfile($id)
     {
@@ -310,6 +318,7 @@ class AdminController extends Controller
      * @param int $id
      *
      * @return string
+     * @throws NotFoundHttpException
      */
     public function actionInfo($id)
     {
@@ -329,6 +338,8 @@ class AdminController extends Controller
      * @param int $id
      *
      * @return string
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
      */
     public function actionSwitch($id = null)
     {
@@ -388,6 +399,7 @@ class AdminController extends Controller
      * @param int $id
      *
      * @return Response
+     * @throws NotFoundHttpException
      */
     public function actionConfirm($id)
     {
@@ -410,6 +422,9 @@ class AdminController extends Controller
      * @param int $id
      *
      * @return mixed
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
@@ -433,6 +448,7 @@ class AdminController extends Controller
      * @param int $id
      *
      * @return Response
+     * @throws NotFoundHttpException
      */
     public function actionBlock($id)
     {
@@ -460,7 +476,10 @@ class AdminController extends Controller
     /**
      * Generates a new password and sends it to the user.
      *
+     * @param $id
      * @return Response
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
      */
     public function actionResendPassword($id)
     {

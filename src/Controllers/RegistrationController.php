@@ -117,16 +117,18 @@ class RegistrationController extends Controller
      * redirects to home page.
      *
      * @return string
-     * @throws \yii\web\HttpException
+     * @throws NotFoundHttpException
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionRegister()
     {
+
         if (!$this->module->enableRegistration) {
             throw new NotFoundHttpException();
         }
 
         /** @var RegistrationForm $model */
-        $model = \Yii::createObject(RegistrationForm::class);
+        $model = \Yii::$container->get(RegistrationForm::class);
         $event = $this->getFormEvent($model);
 
         $this->trigger(self::EVENT_BEFORE_REGISTER, $event);
@@ -156,6 +158,7 @@ class RegistrationController extends Controller
      *
      * @return string
      * @throws NotFoundHttpException
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionConnect($code)
     {
@@ -226,7 +229,8 @@ class RegistrationController extends Controller
      * Displays page where user can request new confirmation token. If resending was successful, displays message.
      *
      * @return string
-     * @throws \yii\web\HttpException
+     * @throws NotFoundHttpException
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionResend()
     {
@@ -235,7 +239,7 @@ class RegistrationController extends Controller
         }
 
         /** @var ResendForm $model */
-        $model = \Yii::createObject(ResendForm::class);
+        $model = \Yii::$container->get(ResendForm::class);
         $event = $this->getFormEvent($model);
 
         $this->trigger(self::EVENT_BEFORE_RESEND, $event);

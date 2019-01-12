@@ -69,7 +69,7 @@ class ProfileController extends Controller
      *
      * @param int $id
      *
-     * @return \yii\web\Response
+     * @return string
      * @throws \yii\web\NotFoundHttpException
      */
     public function actionShow($id)

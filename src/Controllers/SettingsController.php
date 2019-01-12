@@ -147,6 +147,7 @@ class SettingsController extends Controller
      * Shows profile settings form.
      *
      * @return string|\yii\web\Response
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionProfile()
     {
@@ -177,11 +178,12 @@ class SettingsController extends Controller
      * Displays page where user can update account settings (username, email or password).
      *
      * @return string|\yii\web\Response
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionAccount()
     {
         /** @var SettingsForm $model */
-        $model = \Yii::createObject(SettingsForm::class);
+        $model = \Yii::$container->get(SettingsForm::class);
         $event = $this->getFormEvent($model);
 
         $this->performAjaxValidation($model);
@@ -242,8 +244,10 @@ class SettingsController extends Controller
      * @param int $id
      *
      * @return \yii\web\Response
-     * @throws \yii\web\NotFoundHttpException
-     * @throws \yii\web\ForbiddenHttpException
+     * @throws ForbiddenHttpException
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDisconnect($id)
     {
@@ -269,7 +273,9 @@ class SettingsController extends Controller
      * Completely deletes user's account.
      *
      * @return \yii\web\Response
-     * @throws \Exception
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete()
     {

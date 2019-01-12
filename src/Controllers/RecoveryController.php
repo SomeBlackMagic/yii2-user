@@ -95,13 +95,12 @@ class RecoveryController extends Controller
             ],
         ];
     }
-    
+
     /**
      * Shows page where user can request password recovery.
      *
      * @return string
      * @throws NotFoundHttpException
-     * @throws \yii\base\ExitException
      * @throws \yii\base\InvalidConfigException
      */
     public function actionRequest()
@@ -110,11 +109,11 @@ class RecoveryController extends Controller
             throw new NotFoundHttpException();
         }
 
+
         /** @var RecoveryForm $model */
-        $model = \Yii::createObject([
-            'class'    => RecoveryForm::class,
-            'scenario' => RecoveryForm::SCENARIO_REQUEST,
-        ]);
+        $model = \Yii::$container->get(RecoveryForm::class);
+        $model->setScenario(RecoveryForm::SCENARIO_REQUEST);
+
         $event = $this->getFormEvent($model);
 
         $this->performAjaxValidation($model);
@@ -136,11 +135,14 @@ class RecoveryController extends Controller
     /**
      * Displays page where user can reset password.
      *
-     * @param int    $id
+     * @param int $id
      * @param string $code
      *
      * @return string
-     * @throws \yii\web\NotFoundHttpException
+     * @throws NotFoundHttpException
+     * @throws \Throwable
+     * @throws \yii\base\InvalidConfigException
+     * @throws \yii\db\StaleObjectException
      */
     public function actionReset($id, $code)
     {
@@ -170,10 +172,9 @@ class RecoveryController extends Controller
         }
 
         /** @var RecoveryForm $model */
-        $model = \Yii::createObject([
-            'class'    => RecoveryForm::class,
-            'scenario' => RecoveryForm::SCENARIO_RESET,
-        ]);
+        $model = \Yii::$container->get(RecoveryForm::class);
+        $model->setScenario(RecoveryForm::SCENARIO_RESET);
+
         $event->setForm($model);
 
         $this->performAjaxValidation($model);

@@ -141,6 +141,7 @@ class SecurityController extends Controller
      * Displays the login page.
      *
      * @return string|Response
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionLogin()
     {
@@ -149,7 +150,7 @@ class SecurityController extends Controller
         }
 
         /** @var LoginForm $model */
-        $model = \Yii::createObject(LoginForm::class);
+        $model = \Yii::$container->get(LoginForm::class);
         $event = $this->getFormEvent($model);
 
         $this->performAjaxValidation($model);
@@ -191,6 +192,7 @@ class SecurityController extends Controller
      * to create new user account.
      *
      * @param ClientInterface $client
+     * @throws \yii\base\InvalidConfigException
      */
     public function authenticate(ClientInterface $client)
     {
@@ -232,6 +234,7 @@ class SecurityController extends Controller
      * Tries to connect social account to user.
      *
      * @param ClientInterface $client
+     * @throws \yii\base\InvalidConfigException
      */
     public function connect(ClientInterface $client)
     {
