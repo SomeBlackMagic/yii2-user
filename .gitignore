@@ -24,6 +24,5 @@ Thumbs.db
 tests/_app/config/db.local.php
 tests/_support/_generated
 tests/_output/*
+/.env
 
-# composer lock file
-composer.lock

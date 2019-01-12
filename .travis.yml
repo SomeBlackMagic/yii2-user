@@ -20,8 +20,7 @@ cache:
 # install dependencies
 install:
   - travis_retry composer self-update
-  - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.0"
-  - travis_retry composer global require "fxp/composer-asset-plugin:~1.1.0"
+  - travis_retry composer global require hirak/prestissimo
   - travis_retry composer install --prefer-dist
 
 before_script:

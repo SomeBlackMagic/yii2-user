@@ -1,0 +1,31 @@
+version: "3.3"
+services:
+  php:
+    container_name: ${COMPOSE_PROJECT_NAME}_php
+    build:
+      context: .docker/php/
+      dockerfile: Dockerfile
+    restart: on-failure
+    stop_signal: INT
+    working_dir: '/app'
+    depends_on:
+      - mysql
+    volumes:
+      - ./:/app:rw
+
+  mysql:
+    container_name: ${COMPOSE_PROJECT_NAME}_mysql
+    image: percona:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --init-connect='SET NAMES UTF8MB4;' --innodb-flush-log-at-trx-commit=0
+    volumes:
+     - ./.docker/mysql/config/my.cfg:/etc/mysql/my.cnf:ro
+#     - ./.docker/mysql/initdb/:/docker-entrypoint-initdb.d/:ro
+#     - ./.docker/mysql/data:/var/lib/mysql:rw
+     - ./.docker/mysql/logs:/var/log/mysql:rw
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - ${MYSQL_PORT}:3306
