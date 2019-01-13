@@ -6,9 +6,9 @@ use yii\test\ActiveFixture;
 
 class TokenFixture extends ActiveFixture
 {
-    public $modelClass = 'SomeBlackMagic\Yii2User\Models\Token';
+    public $modelClass = \SomeBlackMagic\Yii2User\Models\Token::class;
 
     public $depends = [
-        'tests\_fixtures\UserFixture'
+        \tests\_fixtures\UserFixture::class
     ];
 }

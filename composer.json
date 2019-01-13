@@ -30,6 +30,11 @@
             "SomeBlackMagic\\Yii2User\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\": "tests/"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "master"

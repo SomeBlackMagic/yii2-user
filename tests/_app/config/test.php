@@ -10,10 +10,12 @@ return [
         '@vendor' => VENDOR_DIR,
         '@bower' => VENDOR_DIR . '/bower-asset',
     ],
-    'bootstrap' => ['SomeBlackMagic\Yii2User\Bootstrap'],
+    'bootstrap' => [
+        \SomeBlackMagic\Yii2User\Bootstrap::class
+    ],
     'modules' => [
         'user' => [
-            'class' => 'SomeBlackMagic\Yii2User\Module',
+            'class' => \SomeBlackMagic\Yii2User\Module::class,
             'admins' => ['user'],
         ],
     ],
@@ -28,6 +30,15 @@ return [
         'request' => [
             'cookieValidationKey' => 'test',
             'enableCsrfValidation' => false,
+        ],
+        'assetManager' => [
+            'basePath' => __DIR__ . '/../web/assets',
+        ],
+        'log'              => [
+            'logger' => [
+                'class' => \Codeception\Lib\Connector\Yii2\Logger::class,
+                'traceLevel'  => 3,
+            ]
         ],
     ],
     'params' => [],

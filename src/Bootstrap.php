@@ -73,7 +73,7 @@ class Bootstrap implements BootstrapInterface
                     'identityClass'   => $module->modelMap['User'],
                 ]);
                 $this->configureRouter($app, $module);
-
+                $this->setTranslation($app);
 
                 if (!$app->has('authClientCollection')) {
                     $app->set('authClientCollection', [
