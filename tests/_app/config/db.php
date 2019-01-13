@@ -11,7 +11,6 @@ $db = [
     'username'    => Env::get('MYSQL_USER', 'user'),
     'password'    => Env::get('MYSQL_PASSWORD', 'pass'),
     'charset'     => 'utf8mb4',
-    'tablePrefix' => Env::get('MYSQL_DB_PREFIX', 'prefix_'),
 ];
 
 if (file_exists(__DIR__ . '/db.local.php')) {

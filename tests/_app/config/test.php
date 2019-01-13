@@ -5,7 +5,7 @@ return [
     'basePath' => dirname(__DIR__),
     'language' => 'en-US',
     'aliases' => [
-        '@SomeBlackMagic/Yii2User' => dirname(dirname(dirname(__DIR__))),
+        '@SomeBlackMagic/Yii2User' => dirname(dirname(dirname(__DIR__))).'/src',
         '@tests' => dirname(dirname(__DIR__)),
         '@vendor' => VENDOR_DIR,
         '@bower' => VENDOR_DIR . '/bower-asset',

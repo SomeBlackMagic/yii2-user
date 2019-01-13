@@ -21,7 +21,7 @@ trait ModuleTrait
     }
 
     /**
-     * @return string
+     * @return \yii\db\Connection
      */
     public static function getDb()
     {
