@@ -90,7 +90,8 @@ class Bootstrap implements BootstrapInterface
 
 
     /**
-     *
+     * @param Application $app
+     * @throws \yii\base\InvalidConfigException
      */
     protected function setTranslation(Application $app)
     {
