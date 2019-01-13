@@ -547,7 +547,7 @@ class User extends ActiveRecord implements IdentityInterface
         parent::afterSave($insert, $changedAttributes);
         if ($insert) {
             if ($this->_profile == null) {
-                $this->_profile = \Yii::createObject(Profile::class);
+                $this->_profile = \Yii::$container->get(Profile::class);
             }
             $this->_profile->link('user', $this);
         }

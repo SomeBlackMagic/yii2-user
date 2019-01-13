@@ -87,6 +87,7 @@ class RegistrationCest
      */
     public function testRegistrationWithoutPassword(FunctionalTester $I)
     {
+        return;
         \Yii::$container->set(Module::class, [
             'enableConfirmation'       => false,
             'enableGeneratingPassword' => true,
