@@ -5,7 +5,15 @@ php:
   - 7.2
   - 7.3
 # environment variable used in test suite
-env: TEST_ENVIRONMENT=travis
+env:
+  - TEST_ENVIRONMENT=travis
+  - MYSQL_HOST=localhost
+  - MYSQL_DATABASE=app_test
+  - MYSQL_USER=root
+  - MYSQL_PASSWORD=''
+  - MYSQL_PORT=3306
+  - MYSQL_DB_PREFIX=app_
+
 dist: precise
 
 # faster builds on new travis setup not using sudo
