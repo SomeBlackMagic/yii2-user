@@ -35,11 +35,6 @@
             "tests\\": "tests/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "master"
-        }
-    },
     "repositories": [
         {
             "type": "composer",
